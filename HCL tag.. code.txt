@@ -1,0 +1,23 @@
+devices = [
+    {"name": "Smart Camera", "status": "Online", "failed_logins": 1},
+    {"name": "Door Sensor", "status": "Online", "failed_logins": 5},
+    {"name": "Smart Light", "status": "Offline", "failed_logins": 0}
+]
+
+LIMIT = 3
+
+print("===== IoT SECURITY MONITOR =====")
+
+for device in devices:
+    print("\nDevice:", device["name"])
+    print("Status:", device["status"])
+    print("Failed logins:", device["failed_logins"])
+
+    if device["status"] == "Offline":
+        print("NOTICE: Device is offline.")
+    elif device["failed_logins"] >= LIMIT:
+        print("ALERT: Suspicious login activity!")
+    else:
+        print("Status: No warning detected.")
+
+print("\nMonitoring completed.")
